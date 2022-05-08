@@ -1,0 +1,315 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- Link library leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+<!-- W3 CSS template -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin="">
+  </script>
+
+  <style>
+    #mapid {
+  height: 650px;
+    }
+  </style>
+ <title> Natural Tourist🧗</title>
+</head>
+<body bgcolor= '#BADECA '>
+  <center>
+  <br>
+  <FONT FACE="DB Manit X" size = "10">
+  <strong><font color="#3F4E46 "> 🏔 Natural Tourist Maps of Northeastern in Thailand 🏕</a></FONT></strong>
+</FONT><br>
+  <FONT FACE="DB Manit X" size = "5">
+    <strong><fontcolor="#3F4E46 ">By : Nonthakan P.</font></strong>
+<br>
+  </center>
+  <br>
+  <br>
+  <!-- แบ่งหน้าจอ -->
+      <div class="w3-row">
+              <div id="mapid" class="w3-half"></div>
+              <div id="content" class="w3-half">
+                  <table class="w3-table w3-striped">
+                      <tr>
+                          <th>สถานที่ท่องเที่ยวที่น่าสนใจในภาคตะวัภาคตะวันออกเฉียงเหนือ</th>
+                          <th></th>
+                      </tr>
+                      <tr>
+                          <td>จัดทำโดยนางสาวนนทกาญจน์ ผาสีดา</td>
+                          <td>สถานที่ท่องเที่ยวที่น่าสนใจในภาคตะวัภาคตะวันออกเฉียงเหนือ ของประเทศไทย</td>
+                          <td></td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+  <!-- เรียกแผนที่ขึ้นมาแสดง -->
+    <script>
+  // เรียกแผนที่
+    var map = L.map("mapid").setView([18.343594866272994,98.95948834819647 ],6.5);
+  //based map1
+    var gsat = L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}")
+                .addTo(map);
+  //based map2
+    var osm = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}")
+               .addTo(map);
+  //group layers (1+2)
+    var baseMaps ={
+  //ชื่อชั้นข้อมูล:ตัวแปร
+        OSM:osm,
+        GoogleSat:gsat
+    };
+  //add data
+  var tourpoint = {
+      type: "FeatureCollection",
+      name: "tour_plk",
+      crs: {
+        type: "name",
+          properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
+      },
+    features: [
+    {
+      type: "Feature",
+      properties: {
+        Name: "ถ้ำนาคา",
+        Type: "อุทยานและวนอุทยาน",
+        FID_1: 1358.0,
+        CHANGWAT: "บึงกาฬ",
+        PROVINCE_1: "Bueng Kan ",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️",
+    },
+      geometry: {type: "MultiPoint", coordinates: [[ 104.104514, 17.952410]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "ถ้ำนาคี",
+        Type: "อุทยานและวนอุทยานิ",
+        FID_1: 1357.0,
+        CHANGWAT: "บึงกาฬ",
+        PROVINCE_1: "Bueng Kan",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[104.127228211379, 17.9848151676889  ]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "วัดภูทอก",
+        Type: "วัฒนธรรมและธรรมชาติ",
+        FID_1: 1362.0,
+        CHANGWAT: "บึงกาฬ",
+        PROVINCE_1: "Bueng Kan",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[103.880351678721, 18.1322306160223]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "หินสามวาฬ",
+        Type: "ธรรมชาติ",
+        FID_1: 1364.0,
+        CHANGWAT: "บึงกาฬ,",
+        PROVINCE_1: "BuengKan",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[103.796488072825, 18.2749432510085]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "อุทยานแห่งชาติภูกระดึง",
+        Type: "อุทยานและวนอุทยาน",
+        FID_1: 1355.0,
+        CHANGWAT: "เลย",
+        PROVINCE_1: "Loei",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[101.850368196074, 16.8635394831502]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "อุทยานแห่งชาติป่าหินงาม",
+        Type: "อุทยานและวนอุทยานิ",
+        FID_1: 1365.0,
+        CHANGWAT: "ชัยภูมิ",
+        PROVINCE_1: "Chaiyaphum",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[101.393892056877, 15.6316631553619]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "อุทยานแห่งชาติภูเวียง",
+        Type: "อุทยานและวนอุทยาน",
+        FID_1: 733.0,
+        CHANGWAT: "ขอนแก่น",
+        PROVINCE_1: "Khon Kaen",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[102.237240603138, 16.681092916986]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "อุทยานแห่งชาติผาแต้ม",
+        Type: "อุทยานและวนอุทยาน",
+        FID_1: 1359.0,
+        CHANGWAT: "อุบลราชธานี",
+        PROVINCE_1: "Ubon Ratchathani",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[105.508177826141,15.3991967789106]],},
+    },
+    {
+      type: "Feature",
+      properties: {
+        Name: "วัดศิริสุทโธคําชะโนด(เจ้าปู่ศรีสุทโธ)",
+        Type: "วัฒนธรรม",
+        FID_1: 603.0,
+        CHANGWAT: "อุดรธานี่",
+        PROVINCE_1: "Udon Thani",
+        REGION: "ภาคตะวันออกเฉียงเหนือ",
+        level: "⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[103.35871002666491,17.7435510501676]],},
+    },
+    {
+        type: "Feature",
+        properties: {
+          Name: "อุทยานประวัติศาสตร์พนมรุ้ง",
+          Type: "อุทยานและวนอุทยาน",
+          FID_1: 611.0,
+          CHANGWAT: "บุรีรัมย์",
+          PROVINCE_1: "Buriram",
+          REGION: "ภาคตะวันออกเฉียงเหนือ",
+          level: "⭐️⭐️⭐️⭐️",
+      },
+      geometry: {type: "MultiPoint", coordinates: [[102.94025586273659,14.531966387955853]],},
+    },
+    ],
+    };
+  // add marker and popup
+    var tourLayer = L.geoJSON(tourpoint, {
+        pointToLayer: function (feature, latlng) {
+          return L.marker(latlng).bindPopup(feature.properties.Name);
+        },
+        onEachFeature: function (feature, layer) {
+          layer.on("mouseover", function () {
+            document
+              .getElementById(feature.properties.FID_1)
+              .classList.add("w3-red");
+          });
+
+           layer.on("mouseout", function () {
+              document
+                .getElementById(feature.properties.FID_1)
+                .classList.remove("w3-red");
+          });
+          },
+          }).addTo(map);
+  // Link Table Popup and marker
+  var cont = "";
+  cont += "<table class='w3-table w3-striped'>";
+  cont += "<tr>";
+  cont += "<th>ชื่อแหล่งท่องเที่ยว</th>";
+  cont += "<th>ประเภท</th>";
+  cont += "<th>ระดับ</th>";
+  cont += "</tr>";
+  for (let i in tourpoint.features) {
+    cont += "<tr id=" + tourpoint.features[i].properties.FID_1 + ">";
+    cont += "<td>" + tourpoint.features[i].properties.Name + "</td>";
+    cont += "<td>" + tourpoint.features[i].properties.Type + "</td>";
+    cont += "<td>" + tourpoint.features[i].properties.level + "</td>";
+    cont += "</tr>";
+  }
+  cont += "</table>";
+  console.log(cont);
+  document.getElementById("content").innerHTML = cont;
+
+//create polygon
+  var polygonGeoJson = {
+
+"type": "FeatureCollection",
+"features": [
+ {
+   "type": "Feature",
+   "properties": {},
+   "geometry": {
+     "type": "Polygon",
+     "coordinates": [
+       [
+         [
+           101.063232421875,
+           14.211138758545793
+         ],
+         [
+           105.765380859375,
+           14.211138758545793
+         ],
+         [
+           105.765380859375,
+           18.47960905583197
+         ],
+         [
+           101.063232421875,
+           18.47960905583197
+         ],
+         [
+           101.063232421875,
+           14.211138758545793
+         ]
+       ]
+     ]
+   }
+ }
+]
+}
+     var polygonLayer = L.geoJSON(polygonGeoJson, {
+          style: function (feature) {
+                 return { color: feature.properties.color };
+          },
+          onEachFeature: function (feature, layer) {
+              layer.bindPopup(feature.properties.name);
+
+              layer.on("mouseover", function () {
+                  layer.openPopup();
+              });
+
+              layer.on("mouseout", function () {
+                  layer.closePopup();
+              });
+           },
+      });
+
+    // group point + polygon layer
+      var overlays = {
+          สถานที่ท่องเที่ยว: tourLayer,
+          ขอบเขต: polygonLayer
+      };
+
+    //Create layer control
+       L.control.layers(baseMaps, overlays).addTo(map);
+</script>
+</body>
+</html>
